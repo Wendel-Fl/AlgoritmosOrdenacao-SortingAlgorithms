@@ -1,143 +1,281 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define MAX 100
+#define MAX1 100
+#define MAX2 1000
+#define MAX3 10000
 
-void selectionSort(int *v, int lenght);
-void readVector(int *v, int length);
+void selectionSort(int *v, int length);
+void readVector100(int *v, int length);
+void readVector1000(int *v, int length);
+void readVector10000(int *v, int length);
 void printVector(int *v, int length);
 
 int main() {
    int i;
-   int v1[MAX], v2[MAX], v3[MAX], v4[MAX], v5[MAX], v6[MAX], v7[MAX], v8[MAX], v9[MAX], v10[MAX],
-      v11[MAX], v12[MAX], v13[MAX], v14[MAX], v15[MAX], v16[MAX], v17[MAX], v18[MAX], v19[MAX], v20[MAX],
-      v21[MAX], v22[MAX], v23[MAX], v24[MAX], v25[MAX], v26[MAX], v27[MAX], v28[MAX], v29[MAX], v30[MAX],
-      v31[MAX], v32[MAX], v33[MAX], v34[MAX], v35[MAX], v36[MAX], v37[MAX], v38[MAX], v39[MAX], v40[MAX];
+   
+   int v1[MAX1], v2[MAX1], v3[MAX1], v4[MAX1], v5[MAX1], v6[MAX1], v7[MAX1], v8[MAX1], v9[MAX1], v10[MAX1],
+      v11[MAX1], v12[MAX1], v13[MAX1], v14[MAX1], v15[MAX1], v16[MAX1], v17[MAX1], v18[MAX1], v19[MAX1], v20[MAX1],
+      v21[MAX1], v22[MAX1], v23[MAX1], v24[MAX1], v25[MAX1], v26[MAX1], v27[MAX1], v28[MAX1], v29[MAX1], v30[MAX1],
+      v31[MAX1], v32[MAX1], v33[MAX1], v34[MAX1], v35[MAX1], v36[MAX1], v37[MAX1], v38[MAX1], v39[MAX1], v40[MAX1];
+   
+   int v41[MAX2], v42[MAX2], v43[MAX2], v44[MAX2], v45[MAX2], v46[MAX2], v47[MAX2], v48[MAX2], v49[MAX2], v50[MAX2],
+      v51[MAX2], v52[MAX2], v53[MAX2], v54[MAX2], v55[MAX2], v56[MAX2], v57[MAX2], v58[MAX2], v59[MAX2], v60[MAX2],
+      v61[MAX2], v62[MAX2], v63[MAX2], v64[MAX2], v65[MAX2], v66[MAX2], v67[MAX2], v68[MAX2], v69[MAX2], v70[MAX2],
+      v71[MAX2], v72[MAX2], v73[MAX2], v74[MAX2], v75[MAX2], v76[MAX2], v77[MAX2], v78[MAX2], v79[MAX2], v80[MAX2];
+   
+   int v81[MAX3], v82[MAX3], v83[MAX3], v84[MAX3], v85[MAX3], v86[MAX3], v87[MAX3], v88[MAX3], v89[MAX3], v90[MAX3],
+      v91[MAX3], v92[MAX3], v93[MAX3], v94[MAX3], v95[MAX3], v96[MAX3], v97[MAX3], v98[MAX3], v99[MAX3], v100[MAX3],
+      v101[MAX3], v102[MAX3], v103[MAX3], v104[MAX3], v105[MAX3], v106[MAX3], v107[MAX3], v108[MAX3], v109[MAX3], v110[MAX3],
+      v111[MAX3], v112[MAX3], v113[MAX3], v114[MAX3], v115[MAX3], v116[MAX3], v117[MAX3], v118[MAX3], v119[MAX3], v120[MAX3];
 
    srand(time(NULL));
 
-   readVector(v1, MAX);
-   readVector(v2, MAX);
-   readVector(v3, MAX);
-   readVector(v4, MAX);
-   readVector(v5, MAX);
-   readVector(v6, MAX);
-   readVector(v7, MAX);
-   readVector(v8, MAX);
-   readVector(v9, MAX);
-   readVector(v10, MAX);
-   readVector(v11, MAX);
-   readVector(v12, MAX);
-   readVector(v13, MAX);
-   readVector(v14, MAX);
-   readVector(v15, MAX);
-   readVector(v16, MAX);
-   readVector(v17, MAX);
-   readVector(v18, MAX);
-   readVector(v19, MAX);
-   readVector(v20, MAX);
-   readVector(v21, MAX);
-   readVector(v22, MAX);
-   readVector(v23, MAX);
-   readVector(v24, MAX);
-   readVector(v25, MAX);
-   readVector(v26, MAX);
-   readVector(v27, MAX);
-   readVector(v28, MAX);
-   readVector(v29, MAX);
-   readVector(v30, MAX);
-   readVector(v31, MAX);
-   readVector(v32, MAX);
-   readVector(v33, MAX);
-   readVector(v34, MAX);
-   readVector(v35, MAX);
-   readVector(v36, MAX);
-   readVector(v37, MAX);
-   readVector(v38, MAX);
-   readVector(v39, MAX);
-   readVector(v40, MAX);
+   readVector100(v1, MAX1);
+   readVector100(v2, MAX1);
+   readVector100(v3, MAX1);
+   readVector100(v4, MAX1);
+   readVector100(v5, MAX1);
+   readVector100(v6, MAX1);
+   readVector100(v7, MAX1);
+   readVector100(v8, MAX1);
+   readVector100(v9, MAX1);
+   readVector100(v10, MAX1);
+   readVector100(v11, MAX1);
+   readVector100(v12, MAX1);
+   readVector100(v13, MAX1);
+   readVector100(v14, MAX1);
+   readVector100(v15, MAX1);
+   readVector100(v16, MAX1);
+   readVector100(v17, MAX1);
+   readVector100(v18, MAX1);
+   readVector100(v19, MAX1);
+   readVector100(v20, MAX1);
+   readVector100(v21, MAX1);
+   readVector100(v22, MAX1);
+   readVector100(v23, MAX1);
+   readVector100(v24, MAX1);
+   readVector100(v25, MAX1);
+   readVector100(v26, MAX1);
+   readVector100(v27, MAX1);
+   readVector100(v28, MAX1);
+   readVector100(v29, MAX1);
+   readVector100(v30, MAX1);
+   readVector100(v31, MAX1);
+   readVector100(v32, MAX1);
+   readVector100(v33, MAX1);
+   readVector100(v34, MAX1);
+   readVector100(v35, MAX1);
+   readVector100(v36, MAX1);
+   readVector100(v37, MAX1);
+   readVector100(v38, MAX1);
+   readVector100(v39, MAX1);
+   readVector100(v40, MAX1);
 
-   selectionSort(v1, MAX);
-   selectionSort(v2, MAX);
-   selectionSort(v3, MAX);
-   selectionSort(v4, MAX);
-   selectionSort(v5, MAX);
-   selectionSort(v6, MAX);
-   selectionSort(v7, MAX);
-   selectionSort(v8, MAX);
-   selectionSort(v9, MAX);
-   selectionSort(v10, MAX);
-   selectionSort(v11, MAX);
-   selectionSort(v12, MAX);
-   selectionSort(v13, MAX);
-   selectionSort(v14, MAX);
-   selectionSort(v15, MAX);
-   selectionSort(v16, MAX);
-   selectionSort(v17, MAX);
-   selectionSort(v18, MAX);
-   selectionSort(v19, MAX);
-   selectionSort(v20, MAX);
-   selectionSort(v21, MAX);
-   selectionSort(v22, MAX);
-   selectionSort(v23, MAX);
-   selectionSort(v24, MAX);
-   selectionSort(v25, MAX);
-   selectionSort(v26, MAX);
-   selectionSort(v27, MAX);
-   selectionSort(v28, MAX);
-   selectionSort(v29, MAX);
-   selectionSort(v30, MAX);
-   selectionSort(v31, MAX);
-   selectionSort(v32, MAX);
-   selectionSort(v33, MAX);
-   selectionSort(v34, MAX);
-   selectionSort(v35, MAX);
-   selectionSort(v36, MAX);
-   selectionSort(v37, MAX);
-   selectionSort(v38, MAX);
-   selectionSort(v39, MAX);
-   selectionSort(v40, MAX);
+   readVector1000(v41, MAX2);
+   readVector1000(v42, MAX2);
+   readVector1000(v43, MAX2);
+   readVector1000(v44, MAX2);
+   readVector1000(v45, MAX2);
+   readVector1000(v46, MAX2);
+   readVector1000(v47, MAX2);
+   readVector1000(v48, MAX2);
+   readVector1000(v49, MAX2);
+   readVector1000(v50, MAX2);
+   readVector1000(v51, MAX2);
+   readVector1000(v52, MAX2);
+   readVector1000(v53, MAX2);
+   readVector1000(v54, MAX2);
+   readVector1000(v55, MAX2);
+   readVector1000(v56, MAX2);
+   readVector1000(v57, MAX2);
+   readVector1000(v58, MAX2);
+   readVector1000(v59, MAX2);
+   readVector1000(v60, MAX2);
+   readVector1000(v61, MAX2);
+   readVector1000(v62, MAX2);
+   readVector1000(v63, MAX2);
+   readVector1000(v64, MAX2);
+   readVector1000(v65, MAX2);
+   readVector1000(v66, MAX2);
+   readVector1000(v67, MAX2);
+   readVector1000(v68, MAX2);
+   readVector1000(v69, MAX2);
+   readVector1000(v70, MAX2);
+   readVector1000(v71, MAX2);
+   readVector1000(v72, MAX2);
+   readVector1000(v73, MAX2);
+   readVector1000(v74, MAX2);
+   readVector1000(v75, MAX2);
+   readVector1000(v76, MAX2);
+   readVector1000(v77, MAX2);
+   readVector1000(v78, MAX2);
+   readVector1000(v79, MAX2);
+   readVector1000(v80, MAX2);
 
-   printVector(v1, MAX);
-   printVector(v2, MAX);
-   printVector(v3, MAX);
-   printVector(v4, MAX);
-   printVector(v5, MAX);
-   printVector(v6, MAX);
-   printVector(v7, MAX);
-   printVector(v8, MAX);
-   printVector(v9, MAX);
-   printVector(v10, MAX);
-   printVector(v11, MAX);
-   printVector(v12, MAX);
-   printVector(v13, MAX);
-   printVector(v14, MAX);
-   printVector(v15, MAX);
-   printVector(v16, MAX);
-   printVector(v17, MAX);
-   printVector(v18, MAX);
-   printVector(v19, MAX);
-   printVector(v20, MAX);
-   printVector(v21, MAX);
-   printVector(v22, MAX);
-   printVector(v23, MAX);
-   printVector(v24, MAX);
-   printVector(v25, MAX);
-   printVector(v26, MAX);
-   printVector(v27, MAX);
-   printVector(v28, MAX);
-   printVector(v29, MAX);
-   printVector(v30, MAX);
-   printVector(v31, MAX);
-   printVector(v32, MAX);
-   printVector(v33, MAX);
-   printVector(v34, MAX);
-   printVector(v35, MAX);
-   printVector(v36, MAX);
-   printVector(v37, MAX);
-   printVector(v38, MAX);
-   printVector(v39, MAX);
-   printVector(v40, MAX);
+   selectionSort(v1, MAX1);
+   selectionSort(v2, MAX1);
+   selectionSort(v3, MAX1);
+   selectionSort(v4, MAX1);
+   selectionSort(v5, MAX1);
+   selectionSort(v6, MAX1);
+   selectionSort(v7, MAX1);
+   selectionSort(v8, MAX1);
+   selectionSort(v9, MAX1);
+   selectionSort(v10, MAX1);
+   selectionSort(v11, MAX1);
+   selectionSort(v12, MAX1);
+   selectionSort(v13, MAX1);
+   selectionSort(v14, MAX1);
+   selectionSort(v15, MAX1);
+   selectionSort(v16, MAX1);
+   selectionSort(v17, MAX1);
+   selectionSort(v18, MAX1);
+   selectionSort(v19, MAX1);
+   selectionSort(v20, MAX1);
+   selectionSort(v21, MAX1);
+   selectionSort(v22, MAX1);
+   selectionSort(v23, MAX1);
+   selectionSort(v24, MAX1);
+   selectionSort(v25, MAX1);
+   selectionSort(v26, MAX1);
+   selectionSort(v27, MAX1);
+   selectionSort(v28, MAX1);
+   selectionSort(v29, MAX1);
+   selectionSort(v30, MAX1);
+   selectionSort(v31, MAX1);
+   selectionSort(v32, MAX1);
+   selectionSort(v33, MAX1);
+   selectionSort(v34, MAX1);
+   selectionSort(v35, MAX1);
+   selectionSort(v36, MAX1);
+   selectionSort(v37, MAX1);
+   selectionSort(v38, MAX1);
+   selectionSort(v39, MAX1);
+   selectionSort(v40, MAX1);
+
+   selectionSort(v41, MAX2);
+   selectionSort(v42, MAX2);
+   selectionSort(v43, MAX2);
+   selectionSort(v44, MAX2);
+   selectionSort(v45, MAX2);
+   selectionSort(v46, MAX2);
+   selectionSort(v47, MAX2);
+   selectionSort(v48, MAX2);
+   selectionSort(v49, MAX2);
+   selectionSort(v50, MAX2);
+   selectionSort(v51, MAX2);
+   selectionSort(v52, MAX2);
+   selectionSort(v53, MAX2);
+   selectionSort(v54, MAX2);
+   selectionSort(v55, MAX2);
+   selectionSort(v56, MAX2);
+   selectionSort(v57, MAX2);
+   selectionSort(v58, MAX2);
+   selectionSort(v59, MAX2);
+   selectionSort(v60, MAX2);
+   selectionSort(v61, MAX2);
+   selectionSort(v62, MAX2);
+   selectionSort(v63, MAX2);
+   selectionSort(v64, MAX2);
+   selectionSort(v65, MAX2);
+   selectionSort(v66, MAX2);
+   selectionSort(v67, MAX2);
+   selectionSort(v68, MAX2);
+   selectionSort(v69, MAX2);
+   selectionSort(v70, MAX2);
+   selectionSort(v71, MAX2);
+   selectionSort(v72, MAX2);
+   selectionSort(v73, MAX2);
+   selectionSort(v74, MAX2);
+   selectionSort(v75, MAX2);
+   selectionSort(v76, MAX2);
+   selectionSort(v77, MAX2);
+   selectionSort(v78, MAX2);
+   selectionSort(v79, MAX2);
+   selectionSort(v80, MAX2);
+
+   printVector(v1, MAX1);
+   printVector(v2, MAX1);
+   printVector(v3, MAX1);
+   printVector(v4, MAX1);
+   printVector(v5, MAX1);
+   printVector(v6, MAX1);
+   printVector(v7, MAX1);
+   printVector(v8, MAX1);
+   printVector(v9, MAX1);
+   printVector(v10, MAX1);
+   printVector(v11, MAX1);
+   printVector(v12, MAX1);
+   printVector(v13, MAX1);
+   printVector(v14, MAX1);
+   printVector(v15, MAX1);
+   printVector(v16, MAX1);
+   printVector(v17, MAX1);
+   printVector(v18, MAX1);
+   printVector(v19, MAX1);
+   printVector(v20, MAX1);
+   printVector(v21, MAX1);
+   printVector(v22, MAX1);
+   printVector(v23, MAX1);
+   printVector(v24, MAX1);
+   printVector(v25, MAX1);
+   printVector(v26, MAX1);
+   printVector(v27, MAX1);
+   printVector(v28, MAX1);
+   printVector(v29, MAX1);
+   printVector(v30, MAX1);
+   printVector(v31, MAX1);
+   printVector(v32, MAX1);
+   printVector(v33, MAX1);
+   printVector(v34, MAX1);
+   printVector(v35, MAX1);
+   printVector(v36, MAX1);
+   printVector(v37, MAX1);
+   printVector(v38, MAX1);
+   printVector(v39, MAX1);
+   printVector(v40, MAX1);
+
+   printVector(v41, MAX2);
+   printVector(v42, MAX2);
+   printVector(v43, MAX2);
+   printVector(v44, MAX2);
+   printVector(v45, MAX2);
+   printVector(v46, MAX2);
+   printVector(v47, MAX2);
+   printVector(v48, MAX2);
+   printVector(v49, MAX2);
+   printVector(v50, MAX2);
+   printVector(v51, MAX2);
+   printVector(v52, MAX2);
+   printVector(v53, MAX2);
+   printVector(v54, MAX2);
+   printVector(v55, MAX2);
+   printVector(v56, MAX2);
+   printVector(v57, MAX2);
+   printVector(v58, MAX2);
+   printVector(v59, MAX2);
+   printVector(v60, MAX2);
+   printVector(v61, MAX2);
+   printVector(v62, MAX2);
+   printVector(v63, MAX2);
+   printVector(v64, MAX2);
+   printVector(v65, MAX2);
+   printVector(v66, MAX2);
+   printVector(v67, MAX2);
+   printVector(v68, MAX2);
+   printVector(v69, MAX2);
+   printVector(v70, MAX2);
+   printVector(v71, MAX2);
+   printVector(v72, MAX2);
+   printVector(v73, MAX2);
+   printVector(v74, MAX2);
+   printVector(v75, MAX2);
+   printVector(v76, MAX2);
+   printVector(v77, MAX2);
+   printVector(v78, MAX2);
+   printVector(v79, MAX2);
+   printVector(v80, MAX2);
 
    return 0;
 }
@@ -161,9 +299,21 @@ void selectionSort(int *v, int lenght) {
 
 }
 
-void readVector(int *v, int length) {
+void readVector100(int *v, int length) {
    for (int i = 0; i < length; i++) {
       v[i] = 1 + rand() % 99;
+   }
+}
+
+void readVector1000(int *v, int length) {
+   for (int i = 0; i < length; i++) {
+      v[i] = 1 + rand() % 999;
+   }
+}
+
+void readVector10000(int *v, int length) {
+   for (int i = 0; i < length; i++) {
+      v[i] = 1 + rand() % 9999;
    }
 }
 
@@ -171,5 +321,5 @@ void printVector(int *v, int length) {
    for (int i = 0; i < length; i++) {
       printf("v[%d] = %d\n", i, v[i]);
    }
-   printf("\n\n");
+   printf("\n");
 }
