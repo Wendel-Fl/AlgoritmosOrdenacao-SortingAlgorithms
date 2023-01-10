@@ -1,6 +1,8 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/time.h>
+#include <unistd.h>
 #define MAX1 100
 #define MAX2 1000
 #define MAX3 10000
@@ -287,6 +289,7 @@ void bubbleSort(int *v, int length) {
             int aux = v[j];
             v[j] = v[j + 1];
             v[j + 1] = aux;
+            get_time();
          }
       }
    }
