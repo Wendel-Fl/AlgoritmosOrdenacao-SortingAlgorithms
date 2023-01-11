@@ -6,6 +6,15 @@
 #define MAX1 100
 #define MAX2 1000
 #define MAX3 10000
+/*
+   Minha máquina consegue ler ate 1.000.000
+   com 10.000.000 da segmentation fault;
+   É assim que é pra fazer?
+      cheio de funções
+      funções repetidas
+   Como eu faço pra medir o tempo de execução
+   das funções?
+*/
 
 void bubbleSort(int *v, int length);
 void readVector100(int *v, int length);
