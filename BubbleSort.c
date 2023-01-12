@@ -3,12 +3,17 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include <unistd.h>
-#define MAX1 100
-#define MAX2 1000
-#define MAX3 10000
+#define MAX1 12500
+#define MAX2 25000
+#define MAX3 37500
+#define MAX4 50000
+#define MAX5 62500
+#define MAX6 75000
+#define MAX7 87500
+#define MAX8 100000
 /*
    Minha máquina consegue ler ate 1.000.000
-   com 10.000.000 da segmentation fault;
+   com 10.000.000 dá segmentation fault;
    É assim que é pra fazer?
       cheio de funções
       funções repetidas
@@ -298,7 +303,6 @@ void bubbleSort(int *v, int length) {
             int aux = v[j];
             v[j] = v[j + 1];
             v[j + 1] = aux;
-            get_time();
          }
       }
    }
@@ -306,19 +310,19 @@ void bubbleSort(int *v, int length) {
 
 void readVector100(int *v, int length) {
    for (int i = 0; i < length; i++) {
-      v[i] = 1 + rand() % 99;
+      v[i] = 1 + rand() % 12499;
    }
 }
 
 void readVector1000(int *v, int length) {
    for (int i = 0; i < length; i++) {
-      v[i] = 1 + rand() % 999;
+      v[i] = 1 + rand() % 24999;
    }
 }
 
 void readVector10000(int *v, int length) {
    for (int i = 0; i < length; i++) {
-      v[i] = 1 + rand() % 9999;
+      v[i] = 1 + rand() % 37499;
    }
 }
 
