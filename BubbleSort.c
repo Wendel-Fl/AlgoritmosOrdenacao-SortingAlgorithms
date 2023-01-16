@@ -1,8 +1,7 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/time.h>
-#include <unistd.h>
+#include <time.h>
 #define MAX1 12500
 #define MAX2 25000
 #define MAX3 37500
@@ -44,6 +43,8 @@ int main() {
       v91[MAX3], v92[MAX3], v93[MAX3], v94[MAX3], v95[MAX3], v96[MAX3], v97[MAX3], v98[MAX3], v99[MAX3], v100[MAX3],
       v101[MAX3], v102[MAX3], v103[MAX3], v104[MAX3], v105[MAX3], v106[MAX3], v107[MAX3], v108[MAX3], v109[MAX3], v110[MAX3],
       v111[MAX3], v112[MAX3], v113[MAX3], v114[MAX3], v115[MAX3], v116[MAX3], v117[MAX3], v118[MAX3], v119[MAX3], v120[MAX3];
+
+   double timeSpent = 0.0;
 
    srand(time(NULL));
 
@@ -129,6 +130,7 @@ int main() {
    readVector1000(v79, MAX2);
    readVector1000(v80, MAX2);
 
+   clock_t begin12500 = clock();
    bubbleSort(v1, MAX1);
    bubbleSort(v2, MAX1);
    bubbleSort(v3, MAX1);
@@ -169,129 +171,135 @@ int main() {
    bubbleSort(v38, MAX1);
    bubbleSort(v39, MAX1);
    bubbleSort(v40, MAX1);
+   clock_t end12500 = clock();
 
-   bubbleSort(v41, MAX2);
-   bubbleSort(v42, MAX2);
-   bubbleSort(v43, MAX2);
-   bubbleSort(v44, MAX2);
-   bubbleSort(v45, MAX2);
-   bubbleSort(v46, MAX2);
-   bubbleSort(v47, MAX2);
-   bubbleSort(v48, MAX2);
-   bubbleSort(v49, MAX2);
-   bubbleSort(v50, MAX2);
-   bubbleSort(v51, MAX2);
-   bubbleSort(v52, MAX2);
-   bubbleSort(v53, MAX2);
-   bubbleSort(v54, MAX2);
-   bubbleSort(v55, MAX2);
-   bubbleSort(v56, MAX2);
-   bubbleSort(v57, MAX2);
-   bubbleSort(v58, MAX2);
-   bubbleSort(v59, MAX2);
-   bubbleSort(v60, MAX2);
-   bubbleSort(v61, MAX2);
-   bubbleSort(v62, MAX2);
-   bubbleSort(v63, MAX2);
-   bubbleSort(v64, MAX2);
-   bubbleSort(v65, MAX2);
-   bubbleSort(v66, MAX2);
-   bubbleSort(v67, MAX2);
-   bubbleSort(v68, MAX2);
-   bubbleSort(v69, MAX2);
-   bubbleSort(v70, MAX2);
-   bubbleSort(v71, MAX2);
-   bubbleSort(v72, MAX2);
-   bubbleSort(v73, MAX2);
-   bubbleSort(v74, MAX2);
-   bubbleSort(v75, MAX2);
-   bubbleSort(v76, MAX2);
-   bubbleSort(v77, MAX2);
-   bubbleSort(v78, MAX2);
-   bubbleSort(v79, MAX2);
-   bubbleSort(v80, MAX2);
+   timeSpent = (((double)(end12500 - begin12500)/40) / CLOCKS_PER_SEC) * 1000;
+   printf("Time spent sorting 40 vectors of 12500 elements: %f ms\n", timeSpent);
+   
+   // clock_t begin25000 = clock();
+   // bubbleSort(v41, MAX2);
+   // bubbleSort(v42, MAX2);
+   // bubbleSort(v43, MAX2);
+   // bubbleSort(v44, MAX2);
+   // bubbleSort(v45, MAX2);
+   // bubbleSort(v46, MAX2);
+   // bubbleSort(v47, MAX2);
+   // bubbleSort(v48, MAX2);
+   // bubbleSort(v49, MAX2);
+   // bubbleSort(v50, MAX2);
+   // bubbleSort(v51, MAX2);
+   // bubbleSort(v52, MAX2);
+   // bubbleSort(v53, MAX2);
+   // bubbleSort(v54, MAX2);
+   // bubbleSort(v55, MAX2);
+   // bubbleSort(v56, MAX2);
+   // bubbleSort(v57, MAX2);
+   // bubbleSort(v58, MAX2);
+   // bubbleSort(v59, MAX2);
+   // bubbleSort(v60, MAX2);
+   // bubbleSort(v61, MAX2);
+   // bubbleSort(v62, MAX2);
+   // bubbleSort(v63, MAX2);
+   // bubbleSort(v64, MAX2);
+   // bubbleSort(v65, MAX2);
+   // bubbleSort(v66, MAX2);
+   // bubbleSort(v67, MAX2);
+   // bubbleSort(v68, MAX2);
+   // bubbleSort(v69, MAX2);
+   // bubbleSort(v70, MAX2);
+   // bubbleSort(v71, MAX2);
+   // bubbleSort(v72, MAX2);
+   // bubbleSort(v73, MAX2);
+   // bubbleSort(v74, MAX2);
+   // bubbleSort(v75, MAX2);
+   // bubbleSort(v76, MAX2);
+   // bubbleSort(v77, MAX2);
+   // bubbleSort(v78, MAX2);
+   // bubbleSort(v79, MAX2);
+   // bubbleSort(v80, MAX2);
+   // clock_t end25000 = clock();
 
-   printVector(v1, MAX1);
-   printVector(v2, MAX1);
-   printVector(v3, MAX1);
-   printVector(v4, MAX1);
-   printVector(v5, MAX1);
-   printVector(v6, MAX1);
-   printVector(v7, MAX1);
-   printVector(v8, MAX1);
-   printVector(v9, MAX1);
-   printVector(v10, MAX1);
-   printVector(v11, MAX1);
-   printVector(v12, MAX1);
-   printVector(v13, MAX1);
-   printVector(v14, MAX1);
-   printVector(v15, MAX1);
-   printVector(v16, MAX1);
-   printVector(v17, MAX1);
-   printVector(v18, MAX1);
-   printVector(v19, MAX1);
-   printVector(v20, MAX1);
-   printVector(v21, MAX1);
-   printVector(v22, MAX1);
-   printVector(v23, MAX1);
-   printVector(v24, MAX1);
-   printVector(v25, MAX1);
-   printVector(v26, MAX1);
-   printVector(v27, MAX1);
-   printVector(v28, MAX1);
-   printVector(v29, MAX1);
-   printVector(v30, MAX1);
-   printVector(v31, MAX1);
-   printVector(v32, MAX1);
-   printVector(v33, MAX1);
-   printVector(v34, MAX1);
-   printVector(v35, MAX1);
-   printVector(v36, MAX1);
-   printVector(v37, MAX1);
-   printVector(v38, MAX1);
-   printVector(v39, MAX1);
-   printVector(v40, MAX1);
+   // printVector(v1, MAX1);
+   // printVector(v2, MAX1);
+   // printVector(v3, MAX1);
+   // printVector(v4, MAX1);
+   // printVector(v5, MAX1);
+   // printVector(v6, MAX1);
+   // printVector(v7, MAX1);
+   // printVector(v8, MAX1);
+   // printVector(v9, MAX1);
+   // printVector(v10, MAX1);
+   // printVector(v11, MAX1);
+   // printVector(v12, MAX1);
+   // printVector(v13, MAX1);
+   // printVector(v14, MAX1);
+   // printVector(v15, MAX1);
+   // printVector(v16, MAX1);
+   // printVector(v17, MAX1);
+   // printVector(v18, MAX1);
+   // printVector(v19, MAX1);
+   // printVector(v20, MAX1);
+   // printVector(v21, MAX1);
+   // printVector(v22, MAX1);
+   // printVector(v23, MAX1);
+   // printVector(v24, MAX1);
+   // printVector(v25, MAX1);
+   // printVector(v26, MAX1);
+   // printVector(v27, MAX1);
+   // printVector(v28, MAX1);
+   // printVector(v29, MAX1);
+   // printVector(v30, MAX1);
+   // printVector(v31, MAX1);
+   // printVector(v32, MAX1);
+   // printVector(v33, MAX1);
+   // printVector(v34, MAX1);
+   // printVector(v35, MAX1);
+   // printVector(v36, MAX1);
+   // printVector(v37, MAX1);
+   // printVector(v38, MAX1);
+   // printVector(v39, MAX1);
+   // printVector(v40, MAX1);
 
-   printVector(v41, MAX2);
-   printVector(v42, MAX2);
-   printVector(v43, MAX2);
-   printVector(v44, MAX2);
-   printVector(v45, MAX2);
-   printVector(v46, MAX2);
-   printVector(v47, MAX2);
-   printVector(v48, MAX2);
-   printVector(v49, MAX2);
-   printVector(v50, MAX2);
-   printVector(v51, MAX2);
-   printVector(v52, MAX2);
-   printVector(v53, MAX2);
-   printVector(v54, MAX2);
-   printVector(v55, MAX2);
-   printVector(v56, MAX2);
-   printVector(v57, MAX2);
-   printVector(v58, MAX2);
-   printVector(v59, MAX2);
-   printVector(v60, MAX2);
-   printVector(v61, MAX2);
-   printVector(v62, MAX2);
-   printVector(v63, MAX2);
-   printVector(v64, MAX2);
-   printVector(v65, MAX2);
-   printVector(v66, MAX2);
-   printVector(v67, MAX2);
-   printVector(v68, MAX2);
-   printVector(v69, MAX2);
-   printVector(v70, MAX2);
-   printVector(v71, MAX2);
-   printVector(v72, MAX2);
-   printVector(v73, MAX2);
-   printVector(v74, MAX2);
-   printVector(v75, MAX2);
-   printVector(v76, MAX2);
-   printVector(v77, MAX2);
-   printVector(v78, MAX2);
-   printVector(v79, MAX2);
-   printVector(v80, MAX2);
+   // printVector(v41, MAX2);
+   // printVector(v42, MAX2);
+   // printVector(v43, MAX2);
+   // printVector(v44, MAX2);
+   // printVector(v45, MAX2);
+   // printVector(v46, MAX2);
+   // printVector(v47, MAX2);
+   // printVector(v48, MAX2);
+   // printVector(v49, MAX2);
+   // printVector(v50, MAX2);
+   // printVector(v51, MAX2);
+   // printVector(v52, MAX2);
+   // printVector(v53, MAX2);
+   // printVector(v54, MAX2);
+   // printVector(v55, MAX2);
+   // printVector(v56, MAX2);
+   // printVector(v57, MAX2);
+   // printVector(v58, MAX2);
+   // printVector(v59, MAX2);
+   // printVector(v60, MAX2);
+   // printVector(v61, MAX2);
+   // printVector(v62, MAX2);
+   // printVector(v63, MAX2);
+   // printVector(v64, MAX2);
+   // printVector(v65, MAX2);
+   // printVector(v66, MAX2);
+   // printVector(v67, MAX2);
+   // printVector(v68, MAX2);
+   // printVector(v69, MAX2);
+   // printVector(v70, MAX2);
+   // printVector(v71, MAX2);
+   // printVector(v72, MAX2);
+   // printVector(v73, MAX2);
+   // printVector(v74, MAX2);
+   // printVector(v75, MAX2);
+   // printVector(v76, MAX2);
+   // printVector(v77, MAX2);
+   // printVector(v78, MAX2);
+   // printVector(v79, MAX2);
+   // printVector(v80, MAX2);
 
    return 0;
 }
@@ -310,25 +318,25 @@ void bubbleSort(int *v, int length) {
 
 void readVector100(int *v, int length) {
    for (int i = 0; i < length; i++) {
-      v[i] = 1 + rand() % 12499;
+      v[i] = rand() % 12500;
    }
 }
 
 void readVector1000(int *v, int length) {
    for (int i = 0; i < length; i++) {
-      v[i] = 1 + rand() % 24999;
+      v[i] = rand() % 25000;
    }
 }
 
 void readVector10000(int *v, int length) {
    for (int i = 0; i < length; i++) {
-      v[i] = 1 + rand() % 37499;
+      v[i] = rand() % 37500;
    }
 }
 
-void printVector(int *v, int length) {
-   for (int i = 0; i < length; i++) {
-      printf("v[%d] = %d\n", i, v[i]);
-   }
-   printf("\n");
-}
+// void printVector(int *v, int length) {
+//    for (int i = 0; i < length; i++) {
+//       printf("v[%d] = %d\n", i, v[i]);
+//    }
+//    printf("\n");
+// }
