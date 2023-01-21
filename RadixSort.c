@@ -11,8 +11,6 @@
 #define MAX7 2187
 #define MAX8 6561
 
-int max(int *v, int length);
-int min(int *v, int length);
 void radixSort(int *v, int length);
 void readVector3(int *v, int length);
 void readVector9(int *v, int length);
@@ -24,7 +22,6 @@ void readVector2187(int *v, int length);
 void readVector6561(int *v, int length);
 
 int main() {
-   int i;
    
    int v1[MAX1], v2[MAX1], v3[MAX1], v4[MAX1], v5[MAX1], v6[MAX1], v7[MAX1], v8[MAX1], v9[MAX1], v10[MAX1],
       v11[MAX1], v12[MAX1], v13[MAX1], v14[MAX1], v15[MAX1], v16[MAX1], v17[MAX1], v18[MAX1], v19[MAX1], v20[MAX1],
@@ -119,7 +116,7 @@ int main() {
    readVector9(v46, MAX2);
    readVector9(v47, MAX2);
    readVector9(v48, MAX2);
-   readVector9(v9, MAX2);
+   readVector9(v49, MAX2);
    readVector9(v50, MAX2);
    readVector9(v51, MAX2);
    readVector9(v52, MAX2);
@@ -442,7 +439,7 @@ int main() {
    clock_t end = clock();
 
    timeSpent += (((double)(end - begin)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Time spent sorting 40 vectors of 3 elements: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 3 elementos: %.3f ms\n", timeSpent);
 
    clock_t begin2 = clock();
    radixSort(v41, MAX2);
@@ -453,7 +450,7 @@ int main() {
    radixSort(v46, MAX2);
    radixSort(v47, MAX2);
    radixSort(v48, MAX2);
-   radixSort(v9, MAX2);
+   radixSort(v49, MAX2);
    radixSort(v50, MAX2);
    radixSort(v51, MAX2);
    radixSort(v52, MAX2);
@@ -488,7 +485,7 @@ int main() {
    clock_t end2 = clock();
 
    timeSpent += (((double)(end2 - begin2)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Time spent sorting 40 vectors of 9 elements: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 9 elementos: %.3f ms\n", timeSpent);
 
    clock_t begin3 = clock();
    radixSort(v81, MAX3);
@@ -534,7 +531,7 @@ int main() {
    clock_t end3 = clock();
 
    timeSpent += (((double)(end3 - begin3)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Time spent sorting 40 vectors of 27 elements: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 27 elementos: %.3f ms\n", timeSpent);
 
    clock_t begin4 = clock();
    radixSort(v121, MAX4);
@@ -580,7 +577,7 @@ int main() {
    clock_t end4 = clock();
 
    timeSpent += (((double)(end4 - begin4)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Time spent sorting 40 vectors of 81 elements: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 81 elementos: %.3f ms\n", timeSpent);
 
    clock_t begin5 = clock();
    radixSort(v161, MAX5);
@@ -626,7 +623,7 @@ int main() {
    clock_t end5 = clock();
 
    timeSpent += (((double)(end5 - begin5)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Time spent sorting 40 vectors of 243 elements: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 243 elementos: %.3f ms\n", timeSpent);
 
    clock_t begin6 = clock();
    radixSort(v201, MAX6);
@@ -672,7 +669,7 @@ int main() {
    clock_t end6 = clock();
 
    timeSpent += (((double)(end6 - begin6)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Time spent sorting 40 vectors of 729 elements: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 729 elementos: %.3f ms\n", timeSpent);
 
    clock_t begin7 = clock();
    radixSort(v241, MAX7);
@@ -718,7 +715,7 @@ int main() {
    clock_t end7 = clock();
 
    timeSpent += (((double)(end7 - begin7)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Time spent sorting 40 vectors of 2187 elements: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 2187 elementos: %.3f ms\n", timeSpent);
 
    clock_t begin8 = clock();
    radixSort(v264, MAX8);
@@ -764,70 +761,35 @@ int main() {
    clock_t end8 = clock();
 
    timeSpent += (((double)(end8 - begin8)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Time spent sorting 40 vectors of 6561 elements: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 6561 elementos: %.3f ms\n", timeSpent);
 
    return 0;
 }
 
-// maior elemento do vetor
-int max(int *vet, int length) {
-   int max = vet[0];
-   for (int i = 1; i < length; i++)
-      if (vet[i] > max)
-         max = vet[i];
-   return max;
-}
-
-// menor elemento do vetor
-int min(int *vet, int length) {
-   int min = vet[0];
-   for (int i = 1; i < length; i++)
-      if (vet[i] < min)
-         min = vet[i];
-   return min;
-}
-
-// função que ordena o vetor usando o algoritmo Counting Sort
-void countingSort(int *vet, int length, int coloca) {
-   int i;
-   int maxElement = max(vet, length);
-   int minElement = min(vet, length);
-   int range = maxElement - minElement + 1;
-   int output[length + 1];
-   int max = (vet[0] / coloca) % range;
-
-   for (i = 1; i < length; i++)
-      if (((vet[i] / coloca) % range) > max)
-         max = vet[i];
-
-   int count[max + 1];
-
-   for (i = 0; i < max; i++)
-      count[i] = 0;
-
-   for (i = 0; i < length; i++)
-      count[(vet[i] / coloca) % range]++;
-
-   for (i = 1; i < range; i++)
-      count[i] += count[i - 1];
-
-   for (i = length - 1; i >= 0; i--) {
-      output[count[(vet[i] / coloca) % range] - 1] = vet[i];
-      count[(vet[i] / coloca) % range]--;
-   }
-
-   for (i = 0; i < length; i++)
-      vet[i] = output[i];
-}
-
-// radix sort
 void radixSort(int *vet, int length) {
-   int maxElement = max(vet, length);
-   int minElement = min(vet, length);
-   int range = maxElement - minElement + 1;
-
-   for (int coloca = 1; maxElement / coloca > 0; coloca *= range)
-      countingSort(vet, length, coloca);
+   int i, *bucket, maior, menor, exp = 1;
+   maior = menor = vet[0];
+   for (i = 1; i < length; i++) {
+      if (vet[i] > maior)
+         maior = vet[i];
+      if (vet[i] < menor)
+         menor = vet[i];
+   }
+   while (maior / exp > 0) {
+      bucket = (int *)calloc(10, sizeof(int));
+      for (i = 0; i < length; i++)
+         bucket[(vet[i] / exp) % 10]++;
+      for (i = 1; i < 10; i++)
+         bucket[i] += bucket[i - 1];
+      int *vet2 = (int *)malloc(length * sizeof(int));
+      for (i = length - 1; i >= 0; i--)
+         vet2[--bucket[(vet[i] / exp) % 10]] = vet[i];
+      for (i = 0; i < length; i++)
+         vet[i] = vet2[i];
+      free(vet2);
+      free(bucket);
+      exp *= 10;
+   }
 }
 
 void readVector3(int *v, int length) {
