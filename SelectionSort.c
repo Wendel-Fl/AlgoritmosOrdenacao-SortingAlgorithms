@@ -765,22 +765,6 @@ int main() {
    return 0;
 }
 
-int max(int *v, int length) {
-   int max = v[0];
-   for (int i = 1; i < length; i++)
-      if (v[i] > max)
-         max = v[i];
-   return max;
-}
-
-int min(int *v, int length) {
-   int min = v[0];
-   for (int i = 1; i < length; i++)
-      if (v[i] < min)
-         min = v[i];
-   return min;
-}
-
 void selectionSort(int *vet, int lenght) {
 
   for(int i = 0; i < (lenght-1); i++) {
