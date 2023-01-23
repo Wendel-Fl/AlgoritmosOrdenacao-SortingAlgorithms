@@ -8,7 +8,7 @@
 #define MAX5 243
 #define MAX6 729
 #define MAX7 2187
-#define MAX8 6561
+#define MAX8 10000
 /*
    Minha máquina consegue ler ate 1.000.000
    com 10.000.000 dá segmentation fault;
@@ -27,7 +27,7 @@ void readVector81(int *v, int length);
 void readVector243(int *v, int length);
 void readVector729(int *v, int length);
 void readVector2187(int *v, int length);
-void readVector6561(int *v, int length);
+void readVector10000(int *v, int length);
 
 int main() {
    
@@ -362,46 +362,46 @@ int main() {
    readVector2187(v279, MAX7);
    readVector2187(v280, MAX7);
 
-   readVector6561(v281, MAX8);
-   readVector6561(v282, MAX8);
-   readVector6561(v283, MAX8);
-   readVector6561(v284, MAX8);
-   readVector6561(v285, MAX8);
-   readVector6561(v286, MAX8);
-   readVector6561(v287, MAX8);
-   readVector6561(v288, MAX8);
-   readVector6561(v289, MAX8);
-   readVector6561(v290, MAX8);
-   readVector6561(v291, MAX8);
-   readVector6561(v292, MAX8);
-   readVector6561(v293, MAX8);
-   readVector6561(v294, MAX8);
-   readVector6561(v295, MAX8);
-   readVector6561(v296, MAX8);
-   readVector6561(v297, MAX8);
-   readVector6561(v298, MAX8);
-   readVector6561(v299, MAX8);
-   readVector6561(v300, MAX8);
-   readVector6561(v301, MAX8);
-   readVector6561(v302, MAX8);
-   readVector6561(v303, MAX8);
-   readVector6561(v304, MAX8);
-   readVector6561(v305, MAX8);
-   readVector6561(v306, MAX8);
-   readVector6561(v307, MAX8);
-   readVector6561(v308, MAX8);
-   readVector6561(v309, MAX8);
-   readVector6561(v310, MAX8);
-   readVector6561(v311, MAX8);
-   readVector6561(v312, MAX8);
-   readVector6561(v313, MAX8);
-   readVector6561(v314, MAX8);
-   readVector6561(v315, MAX8);
-   readVector6561(v316, MAX8);
-   readVector6561(v317, MAX8);
-   readVector6561(v318, MAX8);
-   readVector6561(v319, MAX8);
-   readVector6561(v320, MAX8);
+   readVector10000(v281, MAX8);
+   readVector10000(v282, MAX8);
+   readVector10000(v283, MAX8);
+   readVector10000(v284, MAX8);
+   readVector10000(v285, MAX8);
+   readVector10000(v286, MAX8);
+   readVector10000(v287, MAX8);
+   readVector10000(v288, MAX8);
+   readVector10000(v289, MAX8);
+   readVector10000(v290, MAX8);
+   readVector10000(v291, MAX8);
+   readVector10000(v292, MAX8);
+   readVector10000(v293, MAX8);
+   readVector10000(v294, MAX8);
+   readVector10000(v295, MAX8);
+   readVector10000(v296, MAX8);
+   readVector10000(v297, MAX8);
+   readVector10000(v298, MAX8);
+   readVector10000(v299, MAX8);
+   readVector10000(v300, MAX8);
+   readVector10000(v301, MAX8);
+   readVector10000(v302, MAX8);
+   readVector10000(v303, MAX8);
+   readVector10000(v304, MAX8);
+   readVector10000(v305, MAX8);
+   readVector10000(v306, MAX8);
+   readVector10000(v307, MAX8);
+   readVector10000(v308, MAX8);
+   readVector10000(v309, MAX8);
+   readVector10000(v310, MAX8);
+   readVector10000(v311, MAX8);
+   readVector10000(v312, MAX8);
+   readVector10000(v313, MAX8);
+   readVector10000(v314, MAX8);
+   readVector10000(v315, MAX8);
+   readVector10000(v316, MAX8);
+   readVector10000(v317, MAX8);
+   readVector10000(v318, MAX8);
+   readVector10000(v319, MAX8);
+   readVector10000(v320, MAX8);
 
    clock_t begin = clock();
    bucketSort(v1, MAX1);
@@ -769,7 +769,7 @@ int main() {
    clock_t end8 = clock();
 
    timeSpent += (((double)(end8 - begin8)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 6561 elementos: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent);
 
    return 0;
 }
@@ -834,8 +834,10 @@ void readVector2187(int *v, int length) {
    }
 }
 
-void readVector6561(int *v, int length) {
+void readVector10000(int *v, int length) {
+   v = malloc(length * sizeof(int));
    for (int i = 0; i < length; i++) {
-      v[i] = rand() % 6561;
+      v[i] = rand() % 10000;
    }
+   free(v);
 }
