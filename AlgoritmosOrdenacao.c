@@ -69,8 +69,6 @@ int main() {
 
    double timeSpent = 0.0;
 
-   srand(time(NULL));
-
    readVector(v1, MAX1);
    readVector(v2, MAX1);
    readVector(v3, MAX1);
@@ -3412,7 +3410,8 @@ int main() {
 
    timeSpent = 0.0;
    timeSpent += (((double)(end16 - begin16)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent);
+   printf("\n");
 
    return 0;
 }
@@ -3432,18 +3431,39 @@ void bubbleSort(int *v, int length) {
 void bucketSort(int *v, int n) {
    int i, j, k, maior, menor, *bucket;
    maior = menor = v[0];
+   
+   // acha o maior e o menor elemento
    for (i = 1; i < n; i++) {
       if (v[i] > maior)
          maior = v[i];
       if (v[i] < menor)
          menor = v[i];
    }
-   bucket = (int *)calloc(maior - menor + 1, sizeof(int));
+   
+   /*
+      a variavel alcance sera usada para armazenar o tamanho do vetor
+      de buckets a ser criado e incrementar o contador do bucket
+      calcular o indice do bucket onde o elemento deve ser inserido
+   */
+   int alcance = maior - menor + 1;
+
+   // inicializar o vetor de buckets com tamanho correspondente ao alcance dos elementos e com 0 em cada posicao
+   bucket = (int *)calloc(alcance, sizeof(int));
+
+   // contar o numero de elementos em cada bucket
    for (i = 0; i < n; i++)
       bucket[v[i] - menor]++;
-   for (i = 0, j = 0; i < maior - menor + 1; i++)
-      for (k = bucket[i]; k > 0; k--)
+
+   // ordenar o vetor
+   for (i = 0, j = 0; i < alcance; i++) {
+      
+      // ajustar o valor do elemento para o indice correto
+      for (k = bucket[i]; k > 0; k--) {
          v[j++] = i + menor;
+      }
+   
+   }
+
    free(bucket);
 }
 
@@ -3564,26 +3584,26 @@ void quickSort(int *vet, int length) {
 void quickSortRecursion(int *vet, int primeiro, int ultimo) {
    if (primeiro < ultimo)
    {
-      int pivotIndex = partition(vet, primeiro, ultimo);
-      quickSortRecursion(vet, primeiro, pivotIndex - 1); // Engloba o primeiro elemento até pivotIndex - 1
-      quickSortRecursion(vet, pivotIndex + 1, ultimo);   // Engloba de pivotIndex + 1 até o último elemento
+      int indicePivo = partition(vet, primeiro, ultimo);
+      quickSortRecursion(vet, primeiro, indicePivo - 1); // Engloba o primeiro elemento até indicePivo - 1
+      quickSortRecursion(vet, indicePivo + 1, ultimo);   // Engloba de indicePivo + 1 até o último elemento
    }
 }
 
 int partition(int *vet, int primeiro, int ultimo) {
-   int pivotIndex = primeiro + (rand() % (ultimo - primeiro));
+   int indicePivo = primeiro + (rand() % (ultimo - primeiro));
 
-   if (pivotIndex != ultimo)
-      swap(&vet[pivotIndex], &vet[ultimo]);
+   if (indicePivo != ultimo)
+      swap(&vet[indicePivo], &vet[ultimo]);
 
-   int pivotValue = vet[ultimo]; // ultimo elemento
+   int valorPivo = vet[ultimo]; // ultimo elemento
 
    int i = primeiro; // i observa o primeiro elemento
 
    for (int j = primeiro; j < ultimo; j++)
    {
 
-      if (vet[j] <= pivotValue)
+      if (vet[j] <= valorPivo)
       {
          swap(&vet[i], &vet[j]);
          i++;
@@ -3641,7 +3661,9 @@ void selectionSort(int *vet, int lenght) {
 }
 
 void readVector(int *v, int length) {
+
+   srand(time(NULL));
    for (int i = 0; i < length; i++) {
-      v[i] = rand() % 15000;
+      v[i] = rand();
    }
 }
