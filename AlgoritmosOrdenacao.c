@@ -1,5 +1,6 @@
 #include <time.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 #define MAX1 250
 #define MAX2 500
@@ -10,10 +11,9 @@
 #define MAX7 10000
 #define MAX8 15000
 
-void bubbleSort(int *v, int length);
-void bucketSort(int *v, int n);
-void countingSort(int *v, int length);
 void insertionSort(int *v, int length);
+void selectionSort(int *vet, int lenght);
+void bubbleSort(int *v, int length);
 void mergeSort(int *v, int length);
 void mergeSortRecursion(int *vet, int inicio, int fim);
 void mergeSortedArrays(int *vet, int inicio, int meio, int fim);
@@ -22,7 +22,8 @@ void quickSort(int *vet, int length);
 void quickSortRecursion(int *vet, int inicio, int fim);
 int partition(int *vet, int inicio, int fim);
 void radixSort(int *vet, int length);
-void selectionSort(int *vet, int lenght);
+void countingSort(int *v, int length);
+void bucketSort(int *v, int length);
 void readVector(int *v, int length);
 
 int main() {
@@ -441,9 +442,9 @@ int main() {
    clock_t end25 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end25 - begin25)/40) / CLOCKS_PER_SEC) * 1000;
+   timeSpent += ((double)(end25 - begin25) / CLOCKS_PER_SEC) * 1000;
    printf("\nInsertion Sort:\n");
-   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin26 = clock();
    insertionSort(v41, MAX2);
@@ -489,8 +490,8 @@ int main() {
    clock_t end26 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end26 - begin26)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end26 - begin26) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin27 = clock();
    insertionSort(v81, MAX3);
@@ -536,8 +537,8 @@ int main() {
    clock_t end27 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end27 - begin27)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end27 - begin27) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin28 = clock();
    insertionSort(v121, MAX4);
@@ -583,8 +584,8 @@ int main() {
    clock_t end28 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end28 - begin28)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end28 - begin28) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin29 = clock();
    insertionSort(v161, MAX5);
@@ -630,8 +631,8 @@ int main() {
    clock_t end29 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end29 - begin29)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end29 - begin29) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin30 = clock();
    insertionSort(v201, MAX6);
@@ -677,8 +678,8 @@ int main() {
    clock_t end30 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end30 - begin30)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end30 - begin30) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin31 = clock();
    insertionSort(v241, MAX7);
@@ -724,8 +725,8 @@ int main() {
    clock_t end31 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end31 - begin31)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end31 - begin31) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin32 = clock();
    insertionSort(v264, MAX8);
@@ -771,8 +772,8 @@ int main() {
    clock_t end32 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end32 - begin32)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end32 - begin32) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin57 = clock();
    selectionSort(v1, MAX1);
@@ -818,9 +819,9 @@ int main() {
    clock_t end57 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end57 - begin57)/40) / CLOCKS_PER_SEC) * 1000;
+   timeSpent += ((double)(end57 - begin57) / CLOCKS_PER_SEC) * 1000;
    printf("\nSelection Sort:\n");
-   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin58 = clock();
    selectionSort(v41, MAX2);
@@ -866,8 +867,8 @@ int main() {
    clock_t end58 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end58 - begin58)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end58 - begin58) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin59 = clock();
    selectionSort(v81, MAX3);
@@ -913,8 +914,8 @@ int main() {
    clock_t end59 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end59 - begin59)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end59 - begin59) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin60 = clock();
    selectionSort(v121, MAX4);
@@ -960,8 +961,8 @@ int main() {
    clock_t end60 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end60 - begin60)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end60 - begin60) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin61 = clock();
    selectionSort(v161, MAX5);
@@ -1007,8 +1008,8 @@ int main() {
    clock_t end61 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end61 - begin61)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end61 - begin61) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin62 = clock();
    selectionSort(v201, MAX6);
@@ -1054,8 +1055,8 @@ int main() {
    clock_t end62 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end62 - begin62)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end62 - begin62) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin63 = clock();
    selectionSort(v241, MAX7);
@@ -1101,8 +1102,8 @@ int main() {
    clock_t end63 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end63 - begin63)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end63 - begin63) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin64 = clock();
    selectionSort(v264, MAX8);
@@ -1148,8 +1149,8 @@ int main() {
    clock_t end64 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end64 - begin64)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end64 - begin64) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin = clock();
    bubbleSort(v1, MAX1);
@@ -1194,9 +1195,10 @@ int main() {
    bubbleSort(v40, MAX1);
    clock_t end = clock();
 
-   timeSpent += (((double)(end - begin)/40) / CLOCKS_PER_SEC) * 1000;
+   timeSpent = 0.0;
+   timeSpent += ((double)(end - begin) / CLOCKS_PER_SEC) * 1000;
    printf("\nBubble Sort:\n");
-   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin2 = clock();
    bubbleSort(v41, MAX2);
@@ -1242,8 +1244,8 @@ int main() {
    clock_t end2 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end2 - begin2)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end2 - begin2) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin3 = clock();
    bubbleSort(v81, MAX3);
@@ -1289,8 +1291,8 @@ int main() {
    clock_t end3 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end3 - begin3)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end3 - begin3) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin4 = clock();
    bubbleSort(v121, MAX4);
@@ -1336,8 +1338,8 @@ int main() {
    clock_t end4 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end4 - begin4)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end4 - begin4) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin5 = clock();
    bubbleSort(v161, MAX5);
@@ -1383,8 +1385,8 @@ int main() {
    clock_t end5 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end5 - begin5)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end5 - begin5) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin6 = clock();
    bubbleSort(v201, MAX6);
@@ -1430,8 +1432,8 @@ int main() {
    clock_t end6 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end6 - begin6)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end6 - begin6) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin7 = clock();
    bubbleSort(v241, MAX7);
@@ -1477,8 +1479,8 @@ int main() {
    clock_t end7 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end7 - begin7)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end7 - begin7) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin8 = clock();
    bubbleSort(v264, MAX8);
@@ -1524,8 +1526,8 @@ int main() {
    clock_t end8 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end8 - begin8)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end8 - begin8) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin33 = clock();
    mergeSort(v1, MAX1);
@@ -1571,9 +1573,9 @@ int main() {
    clock_t end33 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end33 - begin33)/40) / CLOCKS_PER_SEC) * 1000;
+   timeSpent += ((double)(end33 - begin33) / CLOCKS_PER_SEC) * 1000;
    printf("\nMerge Sort:\n");
-   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin34 = clock();
    mergeSort(v41, MAX2);
@@ -1619,8 +1621,8 @@ int main() {
    clock_t end34 = clock();
    
    timeSpent = 0.0;
-   timeSpent += (((double)(end34 - begin34)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end34 - begin34) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin35 = clock();
    mergeSort(v81, MAX3);
@@ -1666,8 +1668,8 @@ int main() {
    clock_t end35 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end35 - begin35)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end35 - begin35) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin36 = clock();
    mergeSort(v121, MAX4);
@@ -1713,8 +1715,8 @@ int main() {
    clock_t end36 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end36 - begin36)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end36 - begin36) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin37 = clock();
    mergeSort(v161, MAX5);
@@ -1760,8 +1762,8 @@ int main() {
    clock_t end37 = clock();
    
    timeSpent = 0.0;
-   timeSpent += (((double)(end37 - begin37)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end37 - begin37) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin38 = clock();
    mergeSort(v201, MAX6);
@@ -1807,8 +1809,8 @@ int main() {
    clock_t end38 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end38 - begin38)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end38 - begin38) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin39 = clock();
    mergeSort(v241, MAX7);
@@ -1854,8 +1856,8 @@ int main() {
    clock_t end39 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end39 - begin39)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end39 - begin39) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin40 = clock();
    mergeSort(v264, MAX8);
@@ -1901,8 +1903,8 @@ int main() {
    clock_t end40 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end40 - begin40)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end40 - begin40) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin41 = clock();
    quickSort(v1, MAX1);
@@ -1948,9 +1950,9 @@ int main() {
    clock_t end41 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end41 - begin41)/40) / CLOCKS_PER_SEC) * 1000;
+   timeSpent += ((double)(end41 - begin41) / CLOCKS_PER_SEC) * 1000;
    printf("\nQuickSort:\n");
-   printf("Tempo gasto para ordenar 40 vetores de 250 posicoes: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 250 posicoes: %.3f ms\n", timeSpent/40);
 
    clock_t begin42 = clock();
    quickSort(v41, MAX2);
@@ -1996,8 +1998,8 @@ int main() {
    clock_t end42 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end42 - begin42)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 500 posicoes: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end42 - begin42) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 500 posicoes: %.3f ms\n", timeSpent/40);
 
    clock_t begin43 = clock();
    quickSort(v81, MAX3);
@@ -2043,8 +2045,8 @@ int main() {
    clock_t end43 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end43 - begin43)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 750 posicoes: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end43 - begin43) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 750 posicoes: %.3f ms\n", timeSpent/40);
 
    clock_t begin44 = clock();
    quickSort(v121, MAX4);
@@ -2090,8 +2092,8 @@ int main() {
    clock_t end44 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end44 - begin44)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 1000 posicoes: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end44 - begin44) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 1000 posicoes: %.3f ms\n", timeSpent/40);
 
    clock_t begin45 = clock();
    quickSort(v161, MAX5);
@@ -2137,8 +2139,8 @@ int main() {
    clock_t end45 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end45 - begin45)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 2500 posicoes: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end45 - begin45) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 2500 posicoes: %.3f ms\n", timeSpent/40);
 
    clock_t begin46 = clock();
    quickSort(v201, MAX6);
@@ -2184,8 +2186,8 @@ int main() {
    clock_t end46 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end46 - begin46)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 7500 posicoes: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end46 - begin46) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 7500 posicoes: %.3f ms\n", timeSpent/40);
 
    clock_t begin47 = clock();
    quickSort(v241, MAX7);
@@ -2231,8 +2233,8 @@ int main() {
    clock_t end47 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end47 - begin47)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 10000 posicoes: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end47 - begin47) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 10000 posicoes: %.3f ms\n", timeSpent/40);
 
    clock_t begin48 = clock();
    quickSort(v264, MAX8);
@@ -2278,8 +2280,8 @@ int main() {
    clock_t end48 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end48 - begin48)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 15000 posicoes: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end48 - begin48) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 15000 posicoes: %.3f ms\n", timeSpent/40);
 
    clock_t begin49 = clock();
    radixSort(v1, MAX1);
@@ -2325,9 +2327,9 @@ int main() {
    clock_t end49 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end49 - begin49)/40) / CLOCKS_PER_SEC) * 1000;
+   timeSpent += ((double)(end49 - begin49) / CLOCKS_PER_SEC) * 1000;
    printf("\nRadix Sort:\n");
-   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin50 = clock();
    radixSort(v41, MAX2);
@@ -2373,8 +2375,8 @@ int main() {
    clock_t end50 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end50 - begin50)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end50 - begin50) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin51 = clock();
    radixSort(v81, MAX3);
@@ -2420,8 +2422,8 @@ int main() {
    clock_t end51 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end51 - begin51)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end51 - begin51) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin52 = clock();
    radixSort(v121, MAX4);
@@ -2467,8 +2469,8 @@ int main() {
    clock_t end52 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end52 - begin52)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end52 - begin52) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin53 = clock();
    radixSort(v161, MAX5);
@@ -2514,8 +2516,8 @@ int main() {
    clock_t end53 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end53 - begin53)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end53 - begin53) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin54 = clock();
    radixSort(v201, MAX6);
@@ -2561,8 +2563,8 @@ int main() {
    clock_t end54 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end54 - begin54)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end54 - begin54) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin55 = clock();
    radixSort(v241, MAX7);
@@ -2608,8 +2610,8 @@ int main() {
    clock_t end55 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end55 - begin55)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end55 - begin55) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin56 = clock();
    radixSort(v264, MAX8);
@@ -2655,10 +2657,10 @@ int main() {
    clock_t end56 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end56 - begin56)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end56 - begin56) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent/40);
 
-   clock_t begin17 = clock();
+    clock_t begin17 = clock();
    countingSort(v1, MAX1);
    countingSort(v2, MAX1);
    countingSort(v3, MAX1);
@@ -2702,9 +2704,9 @@ int main() {
    clock_t end17 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end17 - begin17)/40) / CLOCKS_PER_SEC) * 1000;
+   timeSpent += ((double)(end17 - begin17) / CLOCKS_PER_SEC) * 1000;
    printf("\nCounting Sort:\n");
-   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin18 = clock();
    countingSort(v41, MAX2);
@@ -2750,8 +2752,8 @@ int main() {
    clock_t end18 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end18 - begin18)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end18 - begin18) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin19 = clock();
    countingSort(v81, MAX3);
@@ -2797,8 +2799,8 @@ int main() {
    clock_t end19 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end19 - begin19)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end19 - begin19) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin20 = clock();
    countingSort(v121, MAX4);
@@ -2844,8 +2846,8 @@ int main() {
    clock_t end20 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end20 - begin20)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end20 - begin20) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin21 = clock();
    countingSort(v161, MAX5);
@@ -2891,8 +2893,8 @@ int main() {
    clock_t end21 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end21 - begin21)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end21 - begin21) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin22 = clock();
    countingSort(v201, MAX6);
@@ -2938,8 +2940,8 @@ int main() {
    clock_t end22 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end22 - begin22)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end22 - begin22) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin23 = clock();
    countingSort(v241, MAX7);
@@ -2985,8 +2987,8 @@ int main() {
    clock_t end23 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end23 - begin23)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end23 - begin23) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin24 = clock();
    countingSort(v264, MAX8);
@@ -3032,8 +3034,8 @@ int main() {
    clock_t end24 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end24 - begin24)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end24 - begin24) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin9 = clock();
    bucketSort(v1, MAX1);
@@ -3079,9 +3081,9 @@ int main() {
    clock_t end9 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end9 - begin9)/40) / CLOCKS_PER_SEC) * 1000;
+   timeSpent += ((double)(end9 - begin9) / CLOCKS_PER_SEC) * 1000;
    printf("\nBucket Sort:\n");
-   printf("Tempo gasto para ordenar 40 vetores de 7 elementos: %.3f ms\n", timeSpent);
+   printf("Tempo gasto para ordenar 40 vetores de 250 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin10 = clock();
    bucketSort(v41, MAX2);
@@ -3127,8 +3129,8 @@ int main() {
    clock_t end10 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end10 - begin10)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end10 - begin10) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin11 = clock();
    bucketSort(v81, MAX3);
@@ -3174,8 +3176,8 @@ int main() {
    clock_t end11 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end11 - begin11)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end11 - begin11) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 750 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin12 = clock();
    bucketSort(v121, MAX4);
@@ -3221,8 +3223,8 @@ int main() {
    clock_t end12 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end12 - begin12)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end12 - begin12) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 1000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin13 = clock();
    bucketSort(v161, MAX5);
@@ -3268,8 +3270,8 @@ int main() {
    clock_t end13 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end13 - begin13)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end13 - begin13) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 2500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin14 = clock();
    bucketSort(v201, MAX6);
@@ -3315,8 +3317,8 @@ int main() {
    clock_t end14 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end14 - begin14)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end14 - begin14) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 7500 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin15 = clock();
    bucketSort(v241, MAX7);
@@ -3362,8 +3364,8 @@ int main() {
    clock_t end15 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end15 - begin15)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end15 - begin15) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 10000 elementos: %.3f ms\n", timeSpent/40);
 
    clock_t begin16 = clock();
    bucketSort(v264, MAX8);
@@ -3409,110 +3411,11 @@ int main() {
    clock_t end16 = clock();
 
    timeSpent = 0.0;
-   timeSpent += (((double)(end16 - begin16)/40) / CLOCKS_PER_SEC) * 1000;
-   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent);
+   timeSpent += ((double)(end16 - begin16) / CLOCKS_PER_SEC) * 1000;
+   printf("Tempo gasto para ordenar 40 vetores de 15000 elementos: %.3f ms\n", timeSpent/40);
    printf("\n");
 
    return 0;
-}
-
-void bubbleSort(int *v, int length) {
-   for (int i = 0; i < length; i++) {
-      for (int j = 0; j < (length - 1); j++) {
-         if (v[j] > v[j + 1]) {
-            int aux = v[j];
-            v[j] = v[j + 1];
-            v[j + 1] = aux;
-         }
-      }
-   }
-}
-
-void bucketSort(int *v, int n) {
-   int i, j, k, maior, menor, *bucket;
-   maior = menor = v[0];
-   
-   // acha o maior e o menor elemento
-   for (i = 1; i < n; i++) {
-      if (v[i] > maior)
-         maior = v[i];
-      if (v[i] < menor)
-         menor = v[i];
-   }
-   
-   /*
-      a variavel alcance sera usada para armazenar o tamanho do vetor
-      de buckets a ser criado e incrementar o contador do bucket
-      calcular o indice do bucket onde o elemento deve ser inserido
-   */
-   int alcance = maior - menor + 1;
-
-   // inicializar o vetor de buckets com tamanho correspondente ao alcance dos elementos e com 0 em cada posicao
-   bucket = (int *)calloc(alcance, sizeof(int));
-
-   // contar o numero de elementos em cada bucket
-   for (i = 0; i < n; i++)
-      bucket[v[i] - menor]++;
-
-   // ordenar o vetor
-   for (i = 0, j = 0; i < alcance; i++) {
-      
-      // ajustar o valor do elemento para o indice correto
-      for (k = bucket[i]; k > 0; k--) {
-         v[j++] = i + menor;
-      }
-   
-   }
-
-   free(bucket);
-}
-
-int max(int *v, int length) {
-   int max = v[0];
-   for (int i = 1; i < length; i++)
-      if (v[i] > max)
-         max = v[i];
-   return max;
-}
-
-int min(int *v, int length) {
-   int min = v[0];
-   for (int i = 1; i < length; i++)
-      if (v[i] < min)
-         min = v[i];
-   return min;
-}
-
-// função que ordena o vor usando o algoritmo Counting Sort
-void countingSort(int *v, int length) {
-   int i;
-   int maxElement = max(v, length);
-   int minElement = min(v, length);
-   int range = maxElement - minElement + 1;
-   int count[range];
-   int output[length];
-
-   // inicializa o vor count com 0
-   for (i = 0; i < range; i++)
-      count[i] = 0;
-
-   // armazena a frequência de cada elemento no vor count
-   for (i = 0; i < length; i++)
-      count[v[i] - minElement]++;
-
-   // armazena a soma das frequências anteriores no vor count
-   for (i = 1; i < range; i++)
-      count[i] += count[i - 1];
-
-   // armazena os elementos no vor output
-   for (i = length - 1; i >= 0; i--) {
-      output[count[v[i] - minElement] - 1] = v[i];
-      count[v[i] - minElement]--;
-   }
-
-   // copia os elementos do vor output para o vor v
-   for (i = 0; i < length; i++)
-      v[i] = output[i];
 }
 
 void insertionSort(int *vet, int length) {
@@ -3526,6 +3429,37 @@ void insertionSort(int *vet, int length) {
          j = j - 1;
       }
       vet[j + 1] = aux;
+   }
+}
+
+void selectionSort(int *vet, int lenght) {
+
+  for(int i = 0; i < (lenght-1); i++) {
+    int min = i;
+
+    for(int j = (i+1); j < lenght; j++) {
+      if(vet[j] < vet[min])
+        min = j;
+    }
+
+    if(vet[i] != vet[min]) {
+      int aux = vet[i];
+      vet[i] = vet[min];
+      vet[min] = aux;
+    }
+  }
+
+}
+
+void bubbleSort(int *v, int length) {
+   for (int i = 0; i < length; i++) {
+      for (int j = 0; j < (length - 1); j++) {
+         if (v[j] > v[j + 1]) {
+            int aux = v[j];
+            v[j] = v[j + 1];
+            v[j + 1] = aux;
+         }
+      }
    }
 }
 
@@ -3618,52 +3552,108 @@ int partition(int *vet, int primeiro, int ultimo) {
 void radixSort(int *vet, int length) {
    int i, *bucket, maior, menor, exp = 1;
    maior = menor = vet[0];
+   
    for (i = 1; i < length; i++) {
       if (vet[i] > maior)
          maior = vet[i];
       if (vet[i] < menor)
          menor = vet[i];
    }
+   
    while (maior / exp > 0) {
       bucket = (int *)calloc(10, sizeof(int));
       for (i = 0; i < length; i++)
          bucket[(vet[i] / exp) % 10]++;
       for (i = 1; i < 10; i++)
          bucket[i] += bucket[i - 1];
-      int *vet2 = (int *)malloc(length * sizeof(int));
+      int *vetAux = (int *)malloc(length * sizeof(int));
       for (i = length - 1; i >= 0; i--)
-         vet2[--bucket[(vet[i] / exp) % 10]] = vet[i];
+         vetAux[--bucket[(vet[i] / exp) % 10]] = vet[i];
       for (i = 0; i < length; i++)
-         vet[i] = vet2[i];
-      free(vet2);
+         vet[i] = vetAux[i];
+      free(vetAux);
       free(bucket);
       exp *= 10;
    }
 }
 
-void selectionSort(int *vet, int lenght) {
+void countingSort(int *v, int length) {
+   int i, j;
+   int max = v[0];
+   
+   for (i = 1; i < length; i++) {
+      if (v[i] > max) {
+         max = v[i];
+      }
+   }
+   
+   int* count = (int*) malloc((max + 1) * sizeof(int));
+   
+   for (i = 0; i <= max; i++) {
+      count[i] = 0;
+   }
+   
+   for (i = 0; i < length; i++) {
+      count[v[i]]++;
+   }
+   
+   for (i = 0, j = 0; i <= max; i++) {
+      while (count[i] > 0) {
+         v[j] = i;
+         j++;
+         count[i]--;
+      }
+   }
 
-  for(int i = 0; i < (lenght-1); i++) {
-    int min = i;
+   free(count);
+}
 
-    for(int j = (i+1); j < lenght; j++) {
-      if(vet[j] < vet[min])
-        min = j;
-    }
+void bucketSort(int *v, int length) {
+   int i, j;
+   int max = v[0];
+   int min = v[0];
 
-    if(vet[i] != vet[min]) {
-      int aux = vet[i];
-      vet[i] = vet[min];
-      vet[min] = aux;
-    }
-  }
+   // Encontra o maior e o menor elemento
+   for (i = 1; i < length; i++) {
+      if (v[i] > max) {
+         max = v[i];
+      }
+      if (v[i] < min) {
+         min = v[i];
+      }
+   }
 
+   // O tamanho e o numero dos buckets eh calculado com base no intervalo entre o maior e o menor elemento
+   int bucketSize = (max - min) / length + 1;
+   int bucketCount = (max - min) / bucketSize + 1;
+
+   // Armazena os buckets
+   int *bucket = (int *)calloc(bucketCount, sizeof(int));
+
+   // Armazena o numero de elementos em cada bucket
+   for (i = 0; i < length; i++) {
+      int bucketIndex = (v[i] - min) / bucketSize;
+      bucket[bucketIndex]++;
+   }
+
+   /*
+      os elementos armazenados no bucket são concatenados
+      de volta no vetor original para obter o resultado ordenado
+   */
+   int k = 0; // indice para mapear a posicao atual do vetor original
+   for (i = 0; i < bucketCount; i++) {
+      for (j = 0; j < bucket[i]; j++) {
+         v[k++] = min + i * bucketSize;
+      }
+   }
+
+   free(bucket);
 }
 
 void readVector(int *v, int length) {
 
    srand(time(NULL));
    for (int i = 0; i < length; i++) {
-      v[i] = rand();
+      v[i] = rand() % 15000;
    }
 }
