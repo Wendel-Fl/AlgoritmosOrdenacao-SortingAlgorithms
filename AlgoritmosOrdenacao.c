@@ -4,6 +4,12 @@
 #define NUM_VETORES 40
 #define NUM_ALGORITMOS 8
 
+   /*
+      Autores:
+         Wendel Marcio de Oliveira Filho - 202105056 - Responsável pela implementação
+         Jefferson Pereira da Silva - 201709006 - Responsável pela parte escrita
+   */
+   
 void geraVetores(int *vet, int length);
 void insertionSort(int *vet, int length);
 void selectionSort(int *vet, int length);
